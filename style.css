@@ -1,0 +1,846 @@
+/* ============================================================
+   التصميم العام
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    display: flex;
+    background: #f0f4f8;
+    min-height: 100vh;
+}
+
+/* ============================================================
+   القائمة الجانبية (Sidebar)
+   ============================================================ */
+.sidebar {
+    width: 250px;
+    min-height: 100vh;
+    background: linear-gradient(180deg, #0f2b44 0%, #1a3a5c 100%);
+    color: white;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.sidebar-header {
+    padding: 25px 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+}
+
+.sidebar-header h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.sidebar-header p {
+    font-size: 13px;
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+.sidebar-nav {
+    padding: 15px 12px;
+    flex: 1;
+}
+
+.nav-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 16px;
+    margin-bottom: 6px;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+    color: rgba(255,255,255,0.7);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    gap: 12px;
+}
+
+.nav-btn:hover {
+    background: rgba(255,255,255,0.08);
+    color: white;
+}
+
+.nav-btn.active {
+    background: rgba(255,255,255,0.15);
+    color: white;
+    box-shadow: inset 3px 0 0 #4a90c4;
+}
+
+.sidebar-footer {
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+/* ============================================================
+   المحتوى الرئيسي
+   ============================================================ */
+.main-content {
+    flex: 1;
+    padding: 25px 30px 30px;
+    max-width: calc(100% - 250px);
+    overflow-x: hidden;
+}
+
+.main-header {
+    margin-bottom: 25px;
+}
+
+.main-header h1 {
+    color: #1a3a5c;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.main-header p {
+    color: #6b7a8f;
+    font-size: 15px;
+    margin-top: 4px;
+}
+
+/* ============================================================
+   قسم رفع الملفات والفلاتر
+   ============================================================ */
+.upload-section {
+    background: white;
+    border-radius: 14px;
+    padding: 20px 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    border: 1px solid #e8ecf2;
+}
+
+.upload-area {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.upload-btn {
+    background: #2d7db8;
+    color: white;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.upload-btn:hover {
+    background: #1a5f8a;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(45, 125, 184, 0.3);
+}
+
+.file-status {
+    color: #27ae60;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+.file-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.file-tag {
+    background: #e8ecf2;
+    padding: 4px 14px;
+    border-radius: 15px;
+    font-size: 12px;
+    color: #1a3a5c;
+}
+
+.filter-area {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #eef2f7;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-group label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #1a3a5c;
+    white-space: nowrap;
+}
+
+.filter-group select {
+    padding: 7px 14px;
+    border-radius: 8px;
+    border: 1px solid #d0d8e0;
+    background: white;
+    font-size: 13px;
+    color: #1a3a5c;
+    cursor: pointer;
+    min-width: 150px;
+}
+
+.filter-group select:focus {
+    outline: none;
+    border-color: #2d7db8;
+    box-shadow: 0 0 0 3px rgba(45, 125, 184, 0.12);
+}
+
+.reset-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 7px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.reset-btn:hover {
+    background: #c0392b;
+}
+
+/* ============================================================
+   الصفحات (تظهر وتختفي)
+   ============================================================ */
+.page {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+
+.page.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.page h2 {
+    color: #1a3a5c;
+    font-size: 20px;
+    margin-bottom: 18px;
+    border-right: 4px solid #2d7db8;
+    padding-right: 14px;
+}
+
+/* ============================================================
+   الجداول
+   ============================================================ */
+.table-container {
+    background: white;
+    border-radius: 14px;
+    border: 1px solid #e8ecf2;
+    overflow-x: auto;
+    padding: 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 700px;
+}
+
+.table-container th {
+    background: #1a3a5c;
+    color: white;
+    padding: 12px 14px;
+    text-align: center;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.table-container td {
+    padding: 10px 14px;
+    text-align: center;
+    border-bottom: 1px solid #eef2f7;
+}
+
+.table-container tr:hover td {
+    background: #f5f9ff;
+}
+
+.table-container .total-row {
+    background: #eef4fc;
+    font-weight: 700;
+}
+
+.table-container .total-row td {
+    border-top: 2px solid #1a3a5c;
+}
+
+/* ============================================================
+   الرسومات البيانية
+   ============================================================ */
+.charts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.chart-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #e8ecf2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.chart-card h3 {
+    color: #1a3a5c;
+    font-size: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.chart-card canvas {
+    max-height: 250px;
+    max-width: 100%;
+}
+
+/* ============================================================
+   تذييل الصفحة
+   ============================================================ */
+.main-footer {
+    text-align: center;
+    padding: 20px 0 5px;
+    color: #8a9aaa;
+    font-size: 13px;
+    border-top: 1px solid #eef2f7;
+    margin-top: 30px;
+}
+
+/* ============================================================
+   شاشات صغيرة (جوال)
+   ============================================================ */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        min-height: auto;
+        position: relative;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 10px 15px;
+    }
+    .sidebar-header {
+        padding: 10px 0;
+        border-bottom: none;
+        flex: 1;
+    }
+    .sidebar-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        padding: 5px 0;
+        flex: 1;
+    }
+    .nav-btn {
+        padding: 8px 14px;
+        font-size: 12px;
+        width: auto;
+        margin-bottom: 0;
+    }
+    .sidebar-footer {
+        display: none;
+    }
+    .main-content {
+        max-width: 100%;
+        padding: 15px;
+    }
+    .filter-area {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-group {
+        flex-wrap: wrap;
+    }
+    .filter-group select {
+        flex: 1;
+        min-width: 100px;
+    }
+    .charts-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================================
+   حالة عدم وجود بيانات
+   ============================================================ */
+.status-empty {
+    text-align: center;
+    padding: 50px 20px;
+    color: #999;
+}
+
+.status-empty h3 {
+    font-size: 18px;
+    color: #6b7a8f;
+    margin-bottom: 8px;
+}
+
+.status-empty p {
+    font-size: 14px;
+}
+/* ============================================================
+   صف محدد في الفلتر
+   ============================================================ */
+.filtered-row td {
+    background: #fff3cd !important;
+    border-left: 4px solid #ffc107;
+}
+
+.filtered-row td:first-child {
+    border-left: 4px solid #ffc107;
+}
+
+/* ============================================================
+   Bouton Effacer
+   ============================================================ */
+.clear-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.clear-btn:hover {
+    background: #c0392b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+}
+
+/* ============================================================
+   PAGE PARAMÈTRES
+   ============================================================ */
+.parametres-container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.param-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #e8ecf2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.param-card h3 {
+    color: #1a3a5c;
+    margin-bottom: 15px;
+    border-right: 4px solid #2d7db8;
+    padding-right: 14px;
+}
+
+.param-actions {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.btn-add {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-add:hover {
+    background: #219a52;
+}
+
+.btn-save {
+    background: #2d7db8;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-save:hover {
+    background: #1a5f8a;
+}
+
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+.param-card table td input {
+    width: 80px;
+    padding: 4px 8px;
+    border: 1px solid #d0d8e0;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+.param-card table td input:focus {
+    outline: none;
+    border-color: #2d7db8;
+}
+
+.axe-tag {
+    background: #e8ecf2;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a3a5c;
+    border: 1px solid #d0d8e0;
+}
+
+/* ============================================================
+   GRAPHIQUES POUR PAGE ANALYSE
+   ============================================================ */
+.charts-grid-analyse {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.charts-grid-analyse .chart-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #e8ecf2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+}
+
+.charts-grid-analyse .chart-card h4 {
+    color: #1a3a5c;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.charts-grid-analyse .chart-card canvas {
+    max-height: 250px;
+    max-width: 100%;
+}
+
+@media (max-width: 900px) {
+    .charts-grid-analyse {
+        grid-template-columns: 1fr;
+    }
+    .charts-grid-analyse .chart-card[style*="grid-column"] {
+        grid-column: auto !important;
+    }
+}
+
+/* ============================================================
+   GRAPHIQUES POUR PAGE ANALYSE
+   ============================================================ */
+.charts-grid-analyse {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.charts-grid-analyse .chart-card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #e8ecf2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    transition: all 0.3s;
+}
+
+.charts-grid-analyse .chart-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.charts-grid-analyse .chart-card h4 {
+    color: #1a3a5c;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.charts-grid-analyse .chart-card canvas {
+    max-height: 250px;
+    max-width: 100%;
+}
+
+@media (max-width: 900px) {
+    .charts-grid-analyse {
+        grid-template-columns: 1fr;
+    }
+    .charts-grid-analyse .chart-card[style*="grid-column"] {
+        grid-column: auto !important;
+    }
+}
+/* ============================================================
+   GRAPHIQUE PK
+   ============================================================ */
+#pkPoints .pk-point {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#pkPoints .pk-point:hover {
+    box-shadow: 0 0 0 4px rgba(45, 125, 184, 0.3), 0 4px 15px rgba(0,0,0,0.2) !important;
+    z-index: 10 !important;
+}
+
+#pkTooltip {
+    animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.pk-filters label:hover {
+    opacity: 0.8;
+}
+
+.pk-filters input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #2d7db8;
+}
+
+/* ============================================================
+   GRAPHIQUES ANALYSE - 3 EN LIGNE
+   ============================================================ */
+.charts-grid-analyse .chart-card {
+    background: white;
+    border-radius: 14px;
+    padding: 15px;
+    border: 1px solid #e8ecf2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    transition: all 0.3s;
+}
+
+.charts-grid-analyse .chart-card:hover {
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+.charts-grid-analyse .chart-card h4 {
+    color: #1a3a5c;
+    font-size: 13px;
+    margin-bottom: 12px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.charts-grid-analyse .chart-card canvas {
+    max-height: 180px;
+    max-width: 100%;
+}
+
+/* ====== Responsive: 3 graphiques en ligne sur grand écran ====== */
+@media (max-width: 992px) {
+    .charts-grid-analyse {
+        grid-template-columns: 1fr 1fr !important;
+    }
+    .charts-grid-analyse .chart-card:last-child {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 600px) {
+    .charts-grid-analyse {
+        grid-template-columns: 1fr !important;
+    }
+}
+/* ============================================================
+   KPI CARDS
+   ============================================================ */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.kpi-card {
+    background: white;
+    border-radius: 14px;
+    padding: 18px 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    border: 1px solid #e8ecf2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.3s;
+}
+
+.kpi-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.kpi-icon {
+    font-size: 28px;
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.kpi-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.kpi-label {
+    font-size: 11px;
+    color: #6b7a8f;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.kpi-value {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a3a5c;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Couleurs des KPI */
+.kpi-card.blue .kpi-icon { background: #e3f0ff; color: #2d7db8; }
+.kpi-card.green .kpi-icon { background: #e3f8ee; color: #27ae60; }
+.kpi-card.red .kpi-icon { background: #fde8e8; color: #e74c3c; }
+.kpi-card.orange .kpi-icon { background: #fef0e0; color: #e67e22; }
+.kpi-card.purple .kpi-icon { background: #eee8fc; color: #8e44ad; }
+.kpi-card.yellow .kpi-icon { background: #fef9e0; color: #f1c40f; }
+
+/* ============================================================
+   DASHBOARD GRID
+   ============================================================ */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.dash-chart {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    border: 1px solid #e8ecf2;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.dash-chart h4 {
+    color: #1a3a5c;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid #eef2f7;
+    padding-bottom: 10px;
+}
+
+.dash-chart canvas {
+    max-height: 220px;
+    max-width: 100%;
+}
+
+/* ============================================================
+   DASHBOARD CHART HEADER
+   ============================================================ */
+.dash-chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eef2f7;
+    padding-bottom: 10px;
+}
+
+.dash-chart-header h4 {
+    color: #1a3a5c;
+    font-size: 14px;
+    margin: 0;
+}
+
+.dash-chart-filters {
+    display: flex;
+    gap: 8px;
+}
+
+.dash-chart-filters select {
+    padding: 4px 10px;
+    border-radius: 6px;
+    border: 1px solid #d0d8e0;
+    font-size: 12px;
+    background: white;
+    color: #1a3a5c;
+    cursor: pointer;
+}
+
+.dash-chart-filters select:focus {
+    outline: none;
+    border-color: #2d7db8;
+}

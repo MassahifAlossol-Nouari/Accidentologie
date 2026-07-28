@@ -844,3 +844,177 @@ body {
     outline: none;
     border-color: #2d7db8;
 }
+/* ============================================================
+   RESPONSIVE POUR PETITS ÉCRANS
+   ============================================================ */
+
+/* شاشات أقل من 1200px */
+@media (max-width: 1200px) {
+    .charts-grid-analyse {
+        grid-template-columns: 1fr 1fr !important;
+    }
+    .kpi-grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+/* شاشات أقل من 992px */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 60px !important;
+    }
+    .sidebar-header h2 {
+        font-size: 14px !important;
+    }
+    .sidebar-header p {
+        display: none !important;
+    }
+    .nav-btn {
+        font-size: 10px !important;
+        padding: 8px !important;
+        justify-content: center !important;
+    }
+    .nav-btn span {
+        display: none !important;
+    }
+    .main-content {
+        max-width: calc(100% - 60px) !important;
+        padding: 10px !important;
+    }
+    .filter-area {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    .filter-group {
+        flex-wrap: wrap !important;
+    }
+    .filter-group select {
+        min-width: 100% !important;
+    }
+    .charts-grid-analyse {
+        grid-template-columns: 1fr !important;
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+    .stats-delais {
+        grid-template-columns: 1fr 1fr !important;
+    }
+    #pkChartContainer {
+        height: 350px !important;
+    }
+}
+
+/* شاشات أقل من 600px (هواتف) */
+@media (max-width: 600px) {
+    body {
+        padding: 5px !important;
+    }
+    .container {
+        padding: 10px !important;
+    }
+    .sidebar {
+        width: 50px !important;
+        padding: 5px !important;
+    }
+    .sidebar-header h2 {
+        font-size: 12px !important;
+    }
+    .sidebar-nav {
+        padding: 5px !important;
+    }
+    .nav-btn {
+        padding: 5px !important;
+        font-size: 14px !important;
+    }
+    .main-content {
+        max-width: calc(100% - 50px) !important;
+        padding: 5px !important;
+    }
+    .main-header h1 {
+        font-size: 16px !important;
+    }
+    .kpi-grid {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+    }
+    .kpi-card {
+        padding: 10px !important;
+    }
+    .kpi-value {
+        font-size: 16px !important;
+    }
+    .kpi-label {
+        font-size: 10px !important;
+    }
+    .stats-delais {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 8px !important;
+    }
+    .stat-card {
+        padding: 10px !important;
+    }
+    .stat-card p {
+        font-size: 16px !important;
+    }
+    .charts-grid-analyse {
+        gap: 10px !important;
+    }
+    .chart-card {
+        padding: 10px !important;
+    }
+    .table-container {
+        overflow-x: auto !important;
+    }
+    .table-container table {
+        font-size: 10px !important;
+        min-width: 600px !important;
+    }
+    .table-container th,
+    .table-container td {
+        padding: 4px 6px !important;
+    }
+    .upload-btn {
+        font-size: 12px !important;
+        padding: 6px 12px !important;
+    }
+    .clear-btn {
+        font-size: 12px !important;
+        padding: 6px 12px !important;
+    }
+    .filter-group select {
+        font-size: 11px !important;
+        height: 60px !important;
+    }
+    .filter-group label {
+        font-size: 11px !important;
+    }
+    #pkChartContainer {
+        height: 300px !important;
+    }
+    .pk-filters {
+        gap: 8px !important;
+    }
+    .pk-filters label {
+        font-size: 11px !important;
+    }
+    .param-card {
+        padding: 10px !important;
+    }
+    .param-card table {
+        font-size: 10px !important;
+        min-width: 500px !important;
+    }
+    .param-card input {
+        width: 50px !important;
+        font-size: 10px !important;
+    }
+    .btn-add,
+    .btn-save {
+        font-size: 11px !important;
+        padding: 4px 10px !important;
+    }
+}

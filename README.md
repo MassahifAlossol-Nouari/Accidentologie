@@ -4,7 +4,7 @@
 
 ## 🎯 Présentation du Projet
 
-**DRRS (Direction Régionale des Routes et de la Sécurité)** est une application web interactive dédiée à l'**analyse approfondie des accidents de la route** sur les axes autoroutiers **A3** et **A301**. 
+**DRRS (Direction Régionale Reseau Sud)** est une application web interactive dédiée à l'**analyse approfondie des accidents de la route** sur les axes autoroutiers **A3** et **A301**. 
 
 Cette plateforme permet aux gestionnaires routiers, aux agents de sécurité et aux analystes de données de :
 - **Visualiser** les données d'accidents de manière claire et intuitive
